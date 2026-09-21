@@ -1,0 +1,7 @@
+fastapi>=0.141.1
+pdfplumber>=0.11.10
+pypdf>=6.19.0
+python-multipart>=0.0.32
+reportlab>=5.0.1
+sqlmodel>=0.0.42
+uvicorn[standard]>=0.53.0

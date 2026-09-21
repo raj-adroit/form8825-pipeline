@@ -1,0 +1,17 @@
+:root {
+  color-scheme: light;
+  font: 18px/145% system-ui, 'Segoe UI', Roboto, sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  background: #f7f7f8;
+  min-height: 100%;
+}
+
+#root {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}

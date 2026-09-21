@@ -1,0 +1,86 @@
+[
+  {
+    "property_name": "A",
+    "property_address": "123 lake ave",
+    "income_line_items": {
+      "gross_rents": 182400,
+      "other_income": 1200
+    },
+    "expense_line_items": {
+      "advertising": 0,
+      "auto_travel": 1450,
+      "cleaning_maintenance": 8200,
+      "commissions": 0,
+      "insurance": 6100,
+      "interest": 42300,
+      "legal_professional": 1800,
+      "real_estate_taxes": 15400,
+      "repairs": 5200,
+      "utilities": 3100,
+      "wages_salaries": 0,
+      "depreciation": 28750,
+      "other_deductions": 2200
+    },
+    "totals": {
+      "total_rental_income": 183600,
+      "total_expenses": 114500,
+      "net_income": 69100
+    }
+  },
+  {
+    "property_name": "B",
+    "property_address": "45 market st",
+    "income_line_items": {
+      "gross_rents": 96000,
+      "other_income": 0
+    },
+    "expense_line_items": {
+      "advertising": 3600,
+      "auto_travel": 0,
+      "cleaning_maintenance": 4100,
+      "commissions": 5760,
+      "insurance": 2900,
+      "interest": 21000,
+      "legal_professional": 950,
+      "real_estate_taxes": 8700,
+      "repairs": 6300,
+      "utilities": 0,
+      "wages_salaries": 12000,
+      "depreciation": 15400,
+      "other_deductions": 1100
+    },
+    "totals": {
+      "total_rental_income": 96000,
+      "total_expenses": 81810,
+      "net_income": 14190
+    }
+  },
+  {
+    "property_name": "C",
+    "property_address": "900 maple ct",
+    "income_line_items": {
+      "gross_rents": 310500,
+      "other_income": 4800
+    },
+    "expense_line_items": {
+      "advertising": 0,
+      "auto_travel": 2100,
+      "cleaning_maintenance": 11400,
+      "commissions": 0,
+      "insurance": 9800,
+      "interest": 68500,
+      "legal_professional": 3200,
+      "real_estate_taxes": 27600,
+      "repairs": 9100,
+      "utilities": 5400,
+      "wages_salaries": 42000,
+      "depreciation": 51200,
+      "other_deductions": 6700
+    },
+    "totals": {
+      "total_rental_income": 315300,
+      "total_expenses": 237000,
+      "net_income": 78300
+    }
+  }
+]
