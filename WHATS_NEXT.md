@@ -2,28 +2,29 @@
 
 Tasks 1-3 are complete and verified working end-to-end (extraction matches
 both provided/generated fixtures exactly, full stack runs and edits persist
-with an audit trail). Task 4 is bonus/optional per the assignment and was
-not implemented in this session. Here's what it would take:
+with an audit trail). Task 4 is bonus/optional per the assignment; the JSON
+output validation half (items 1-2) is now implemented, the rest isn't. Here's
+what it would take for what's left:
 
-## Task 4 - tests (bonus, not done)
+## Task 4 - tests (bonus)
 
-1. **Extraction accuracy tests** (pytest): for each fixture
-   (`task_input_files/f8825.pdf` + `task_input_files/8825_output.json`, and
-   `f8825_multi.pdf` + `f8825_multi_expected.json`), run `extract_pdf()` and
-   assert the result equals the expected JSON exactly. Both fixtures and
-   the comparison logic already exist (used manually via `diff` during
-   development in this session) - wrapping them in `pytest` is mechanical.
-2. **Totals validation tests**: `form8825/validate.py` (built during Task 2)
-   already implements the three checks - 2c = 2a + 2b, line 18 = sum of
-   expenses, line 19 = 2c - 18 - and a grand-total-net-income rollup. Tests
-   would call `validate_property()`/`validate_properties()` against both
-   fixtures and assert zero issues, plus a deliberately-broken case to
-   confirm each check actually fires.
+1. **Extraction accuracy tests** - done, `tests/test_extraction.py`: for
+   each fixture (`task_input_files/f8825.pdf` + `8825_output.json`, and
+   `f8825_multi.pdf` / `f8825_multi_flat.pdf` + `f8825_multi_expected.json`),
+   runs `extract_pdf()` and asserts the result equals the expected JSON
+   exactly, both as a whole-property compare and field-by-field.
+2. **Totals validation tests** - done, `tests/test_validation.py`: exercises
+   `form8825/validate.py`'s three checks - 2c = 2a + 2b, line 18 = sum of
+   expenses, line 19 = 2c - 18 - and the grand-total-net-income rollup
+   against all fixtures, plus a deliberately-broken case per total to
+   confirm each check actually fires. Run with `uv run python -m pytest -q`
+   (72 tests, all passing as of this session).
 3. **CSV test result file**: one row per (property, check) - e.g.
-   `document, property, check, expected, actual, passed` - written by the
-   pytest run (a session-scoped fixture that accumulates rows and writes
-   the CSV on teardown, or a small `pytest` plugin hook). Suggested columns:
-   `fixture_file, property_name, check_name, expected, actual, passed`.
+   `fixture_file, property_name, check_name, expected, actual, passed` -
+   written by the pytest run (a session-scoped fixture that accumulates rows
+   and writes the CSV on teardown, or a small `pytest` plugin hook). Not
+   implemented; the tests above currently report pass/fail only via pytest's
+   own output.
 4. **UI test automation**: Playwright against the running frontend +
    backend. Minimum useful coverage: upload a fixture PDF, assert each
    property renders with the right totals; edit one line item, assert the

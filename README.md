@@ -94,6 +94,23 @@ npm run dev
 
 Open http://localhost:5173. Upload a PDF, edit any income/expense number, and the totals and grand total recalculate immediately; every edit is recorded and visible via the "history" link on each row. The SQLite file (`backend/form8825.db`) is created on first run and is gitignored.
 
+## Task 4 - JSON output validation tests (partial, bonus)
+
+```bash
+uv run python -m pytest -q
+# or, with the plain venv:
+python -m pytest -q
+```
+
+`tests/test_extraction.py` runs `extract_pdf()` on every fixture PDF (single-property
+`f8825.pdf`, and both multi-property forms) and asserts the result matches its
+expected JSON exactly, field by field. `tests/test_validation.py` asserts line 2c
+(total income), line 18 (total expenses), line 19 (net income) and the grand-total
+roll-up are correct via `form8825/validate.py` - the same module the CLI and the
+Task 3 API use - plus negative-path cases that confirm each check actually fires on
+a deliberately broken total. See [WHATS_NEXT.md](WHATS_NEXT.md) for the parts of
+Task 4 (CSV result file, UI test automation) not yet built.
+
 ## Design notes
 
 - **DB schema**: `documents` -> `extraction_runs` -> `properties` -> `line_items`, with an append-only `line_item_changes` audit log. Totals are never stored - they're computed from `line_items` on every read, so they can't drift from the underlying numbers. See [backend/models.py](backend/models.py).
